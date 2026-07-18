@@ -21,7 +21,8 @@
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-ghcolors.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <!-- Template favicon is disabled while SymTRELLIS assets are being prepared. -->
+  <link rel="icon" type="image/png" href="./static/images/dodecahedron.png">
+  <link rel="apple-touch-icon" href="./static/images/dodecahedron.png">
 
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"></script>
@@ -139,6 +140,16 @@
   Template body sections are temporarily disabled while the SymTRELLIS page content is being prepared.
 -->
 
+<section class="section abstract-section" id="Abstract">
+  <div class="container is-max-widescreen content">
+    <h2 class="title is-3 has-text-centered">Abstract</h2>
+    <div class="abstract-body">
+      <p>
+        Single-view 3D generative models have achieved impressive visual quality, yet they are not designed to satisfy structural or functional requirements, and in practice, often fall short. Symmetry is one such requirement: violations, even subtle ones, on symmetry can render a model physically unusable. We present <strong>SymTRELLIS</strong>, a method that enforces <strong>arbitrary finite point group symmetries</strong> (rotational, reflectional, and polyhedral) during the flow-based 3D generation of TRELLIS.2, <strong>without retraining</strong> the underlying VAE or flow model. Our key idea is to approximate the latent-space action of spatial transformations as a learned linear operator on voxel latents, implemented as a lightweight <strong>spatial-transform latent mapper</strong> trained on generic, non-symmetric 3D data. At generation time, we enforce symmetry by averaging predicted flow velocities across all symmetry-equivalent transformations at each ODE step, a process we call <strong>velocity symmetrization</strong>. The symmetry specification can be estimated automatically from an initial TRELLIS.2 generation or supplied by the user, enabling deliberate fold manipulation beyond what the input image suggests. On a curated benchmark of 266 strictly symmetric objects spanning 2- to 20-fold rotations and polyhedral symmetry groups, SymTRELLIS substantially reduces all symmetry error metrics compared to TRELLIS.2, Hunyuan3D-2.1, and TripoSG, while maintaining reconstruction accuracy comparable to the base model.
+      </p>
+    </div>
+  </div>
+</section>
 
 <section class="section section-light demo-section" id="Demo">
   <div class="container demo-container content">

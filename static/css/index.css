@@ -47,6 +47,14 @@ body {
 .publication-header .hero-body {
 }
 
+.hero > .hero-body {
+  padding-bottom: 0;
+}
+
+.publication-links {
+  line-height: 1;
+}
+
 .publication-title {
     font-family: 'Google Sans', sans-serif;
 }
@@ -79,6 +87,29 @@ body {
 
 .section-light {
   background-color: #f5f5f5;
+}
+
+.abstract-section {
+  padding-top: 0;
+  padding-bottom: 2rem;
+}
+
+.abstract-section .title {
+  font-family: 'Google Sans', sans-serif;
+  margin-bottom: 1rem;
+}
+
+.abstract-body {
+  color: #333;
+  max-width: 1180px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.58;
+  text-align: left;
+}
+
+.abstract-body p:not(:last-child) {
+  margin-bottom: 1rem;
 }
 
 .demo-container {
