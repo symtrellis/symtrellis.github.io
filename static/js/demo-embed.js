@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
   var frame = document.querySelector('.demo-embed-frame');
-  var openButton = document.querySelector('.demo-open-button');
 
   if (!frame) {
     return;
@@ -24,14 +23,4 @@ document.addEventListener('DOMContentLoaded', function () {
   } else {
     window.addEventListener('resize', resizeDemoEmbed);
   }
-
-  window.addEventListener('message', function (event) {
-    if (
-      event.origin === 'https://quantaji-symtrellis.hf.space' &&
-      event.data &&
-      event.data.type === 'symtrellis-demo-url'
-    ) {
-      openButton.href = event.data.url;
-    }
-  });
 });

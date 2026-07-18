@@ -123,7 +123,7 @@
                   <span class="icon">
                     <i class="fa-brands fa-hugging-face"></i>
                   </span>
-                  <span>Datasets (Coming Soon)</span>
+                  <span>Datasets (TBD)</span>
                 </a>
               </span>
               <!-- Video, code, and data links are temporarily disabled while SymTRELLIS resources are being prepared. -->
@@ -176,19 +176,20 @@
 </section>
 
 
-<section class="section" id="Deploy">
+<section class="section section-light" id="Deploy">
   <div class="container is-max-desktop content">
     <h2 class="title">Deploy the demo locally</h2>
     <div class="code-card">
       <button class="copy-button" type="button" data-copy-target="local-demo-code" aria-label="Copy local deployment command">
         <i class="far fa-clone"></i>
       </button>
-      <pre class="language-bash"><code id="local-demo-code" class="language-bash"># Options:
-# inference-torch2.9.0-cu130-py312
-# inference-torch2.8.0-cu128-py312
-# inference-torch2.7.0-cu128-py311
-# inference-torch2.6.0-cu124-py310
-SYMTRELLIS_DOCKER_TAG=inference-torch2.9.0-cu130-py312
+      <pre class="language-bash"><code id="local-demo-code" class="language-bash">ENV_TAG=torch2.9.0-cu130-py312
+# Options:
+# torch2.9.0-cu130-py312
+# torch2.8.0-cu128-py312
+# torch2.7.0-cu128-py311
+# torch2.6.0-cu124-py310
+
 docker run --rm --gpus all                                          \
   -p 7860:7860                                                      \
   -e SYMTRELLIS_WEBUI_SESSION_TIMEOUT_SECONDS=315360000             \
@@ -197,7 +198,396 @@ docker run --rm --gpus all                                          \
   -e HUGGINGFACE_HUB_CACHE=/root/.cache/huggingface/hub             \
   -v "$HOME/.cache/huggingface:/root/.cache/huggingface"            \
   -v "$HOME/.config/huggingface:/root/.config/huggingface:ro"       \
-  ghcr.io/quantaji/symtrellis:"$SYMTRELLIS_DOCKER_TAG"</code></pre>
+  ghcr.io/quantaji/symtrellis:inference-"$ENV_TAG"</code></pre>
+    </div>
+  </div>
+</section>
+
+
+<section class="section visuals-section" id="Visuals">
+  <div class="container is-max-widescreen">
+    <h2 class="title">Visuals</h2>
+    <div class="visuals-table-wrap">
+      <div class="visuals-table" aria-label="Visual comparison examples">
+        <div class="visuals-header">Input</div>
+        <div class="visuals-header">TripoSG</div>
+        <div class="visuals-header">Hunyuan3D 2.1</div>
+        <div class="visuals-header">TRELLIS.2</div>
+        <div class="visuals-header">SymTRELLIS</div>
+
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/00_gear/00_input.webp" alt="Gear input image" loading="lazy">
+        </figure>
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/00_gear/01_triposg.webp" alt="Gear result from TripoSG" loading="lazy">
+        </figure>
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/00_gear/02_hunyuan.webp" alt="Gear result from Hunyuan3D 2.1" loading="lazy">
+        </figure>
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/00_gear/03_trellis2.webp" alt="Gear result from TRELLIS.2" loading="lazy">
+        </figure>
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/00_gear/04_symtrellis.webp" alt="Gear result from SymTRELLIS" loading="lazy">
+        </figure>
+
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/01_icosahedral/00_input.webp" alt="Icosahedral input image" loading="lazy">
+        </figure>
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/01_icosahedral/01_triposg.webp" alt="Icosahedral result from TripoSG" loading="lazy">
+        </figure>
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/01_icosahedral/02_hunyuan.webp" alt="Icosahedral result from Hunyuan3D 2.1" loading="lazy">
+        </figure>
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/01_icosahedral/03_trellis2.webp" alt="Icosahedral result from TRELLIS.2" loading="lazy">
+        </figure>
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/01_icosahedral/04_symtrellis.webp" alt="Icosahedral result from SymTRELLIS" loading="lazy">
+        </figure>
+
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/02_turbo_blade/00_input.webp" alt="Turbo blade input image" loading="lazy">
+        </figure>
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/02_turbo_blade/01_triposg.webp" alt="Turbo blade result from TripoSG" loading="lazy">
+        </figure>
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/02_turbo_blade/02_hunyuan.webp" alt="Turbo blade result from Hunyuan3D 2.1" loading="lazy">
+        </figure>
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/02_turbo_blade/03_trellis2.webp" alt="Turbo blade result from TRELLIS.2" loading="lazy">
+        </figure>
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/02_turbo_blade/04_symtrellis.webp" alt="Turbo blade result from SymTRELLIS" loading="lazy">
+        </figure>
+
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/03_fountain/00_input.webp" alt="Table fountain input image" loading="lazy">
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/03_fountain/01_triposg_main.webp" alt="Table fountain result from TripoSG" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/03_fountain/01_triposg_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/03_fountain/02_hunyuan_main.webp" alt="Table fountain result from Hunyuan3D 2.1" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/03_fountain/02_hunyuan_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/03_fountain/03_trellis2_main.webp" alt="Table fountain result from TRELLIS.2" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/03_fountain/03_trellis2_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/03_fountain/04_symtrellis_main.webp" alt="Table fountain result from SymTRELLIS" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/03_fountain/04_symtrellis_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/04_silver_cup/00_input.webp" alt="Silver cup input image" loading="lazy">
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/04_silver_cup/01_triposg_main.webp" alt="Silver cup result from TripoSG" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--bottom-right" src="./static/images/visual/04_silver_cup/01_triposg_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/04_silver_cup/02_hunyuan_main.webp" alt="Silver cup result from Hunyuan3D 2.1" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--bottom-right" src="./static/images/visual/04_silver_cup/02_hunyuan_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/04_silver_cup/03_trellis2_main.webp" alt="Silver cup result from TRELLIS.2" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--bottom-right" src="./static/images/visual/04_silver_cup/03_trellis2_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/04_silver_cup/04_symtrellis_main.webp" alt="Silver cup result from SymTRELLIS" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--bottom-right" src="./static/images/visual/04_silver_cup/04_symtrellis_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/05_icosahedral/00_input.webp" alt="Great disdyakis triacontahedron input image" loading="lazy">
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/05_icosahedral/01_triposg_main.webp" alt="Great disdyakis triacontahedron result from TripoSG" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/05_icosahedral/01_triposg_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/05_icosahedral/02_hunyuan_main.webp" alt="Great disdyakis triacontahedron result from Hunyuan3D 2.1" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/05_icosahedral/02_hunyuan_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/05_icosahedral/03_trellis2_main.webp" alt="Great disdyakis triacontahedron result from TRELLIS.2" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/05_icosahedral/03_trellis2_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/05_icosahedral/04_symtrellis_main.webp" alt="Great disdyakis triacontahedron result from SymTRELLIS" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/05_icosahedral/04_symtrellis_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/06_lotus/00_input.webp" alt="Lotus input image" loading="lazy">
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/06_lotus/01_triposg_main.webp" alt="Lotus result from TripoSG" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/06_lotus/01_triposg_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/06_lotus/02_hunyuan_main.webp" alt="Lotus result from Hunyuan3D 2.1" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/06_lotus/02_hunyuan_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/06_lotus/03_trellis2_main.webp" alt="Lotus result from TRELLIS.2" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/06_lotus/03_trellis2_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/06_lotus/04_symtrellis_main.webp" alt="Lotus result from SymTRELLIS" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/06_lotus/04_symtrellis_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/07_gear/00_input.webp" alt="15-fold gear input image" loading="lazy">
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/07_gear/01_triposg_main.webp" alt="15-fold gear result from TripoSG" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/07_gear/01_triposg_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/07_gear/02_hunyuan_main.webp" alt="15-fold gear result from Hunyuan3D 2.1" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/07_gear/02_hunyuan_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/07_gear/03_trellis2_main.webp" alt="15-fold gear result from TRELLIS.2" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/07_gear/03_trellis2_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/07_gear/04_symtrellis_main.webp" alt="15-fold gear result from SymTRELLIS" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/07_gear/04_symtrellis_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+
+        <figure class="visuals-cell">
+          <img src="./static/images/visual/08_omniwheel/00_input.webp" alt="Omniwheel input image" loading="lazy">
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/08_omniwheel/01_triposg_main.webp" alt="Omniwheel result from TripoSG" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/08_omniwheel/01_triposg_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/08_omniwheel/02_hunyuan_main.webp" alt="Omniwheel result from Hunyuan3D 2.1" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/08_omniwheel/02_hunyuan_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/08_omniwheel/03_trellis2_main.webp" alt="Omniwheel result from TRELLIS.2" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/08_omniwheel/03_trellis2_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+        <figure class="visuals-cell">
+          <div class="visuals-composite">
+            <img class="visuals-main" src="./static/images/visual/08_omniwheel/04_symtrellis_main.webp" alt="Omniwheel result from SymTRELLIS" loading="lazy">
+            <img class="visuals-zoom visuals-zoom--top-right" src="./static/images/visual/08_omniwheel/04_symtrellis_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section fold-section" id="FoldManipulation">
+  <div class="container is-max-widescreen">
+    <h2 class="title">Fold Manipulation</h2>
+
+    <div class="fold-grid fold-grid--six" aria-label="Gear fold manipulation examples">
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <img src="./static/images/fold_manipulation/00_gear/00_input_image.webp" alt="Gear input image" loading="lazy">
+        </div>
+        <figcaption class="fold-label">Input Image</figcaption>
+      </figure>
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <img src="./static/images/fold_manipulation/00_gear/01_vanilla_trellis2.webp" alt="Gear result from TRELLIS.2" loading="lazy">
+        </div>
+        <figcaption class="fold-label">TRELLIS.2</figcaption>
+      </figure>
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <img src="./static/images/fold_manipulation/00_gear/02_fold_09.webp" alt="Gear result with 9-fold symmetry" loading="lazy">
+        </div>
+        <figcaption class="fold-label">9 Fold</figcaption>
+      </figure>
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <img src="./static/images/fold_manipulation/00_gear/03_fold_10.webp" alt="Gear result with 10-fold symmetry" loading="lazy">
+        </div>
+        <figcaption class="fold-label">10 Fold</figcaption>
+      </figure>
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <img src="./static/images/fold_manipulation/00_gear/04_fold_11.webp" alt="Gear result with 11-fold symmetry" loading="lazy">
+        </div>
+        <figcaption class="fold-label">11 Fold</figcaption>
+      </figure>
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <img src="./static/images/fold_manipulation/00_gear/05_fold_12.webp" alt="Gear result with 12-fold symmetry" loading="lazy">
+        </div>
+        <figcaption class="fold-label">12 Fold</figcaption>
+      </figure>
+    </div>
+
+    <div class="fold-grid fold-grid--six" aria-label="Gear fold manipulation continuation">
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <img src="./static/images/fold_manipulation/00_gear/06_fold_13.webp" alt="Gear result with 13-fold symmetry" loading="lazy">
+        </div>
+        <figcaption class="fold-label">13 Fold</figcaption>
+      </figure>
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <img src="./static/images/fold_manipulation/00_gear/07_fold_14.webp" alt="Gear result with 14-fold symmetry" loading="lazy">
+        </div>
+        <figcaption class="fold-label">14 Fold</figcaption>
+      </figure>
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <img src="./static/images/fold_manipulation/00_gear/08_fold_15.webp" alt="Gear result with 15-fold symmetry" loading="lazy">
+        </div>
+        <figcaption class="fold-label">15 Fold</figcaption>
+      </figure>
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <img src="./static/images/fold_manipulation/00_gear/09_fold_16.webp" alt="Gear result with 16-fold symmetry" loading="lazy">
+        </div>
+        <figcaption class="fold-label">16 Fold</figcaption>
+      </figure>
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <img src="./static/images/fold_manipulation/00_gear/10_fold_17.webp" alt="Gear result with 17-fold symmetry" loading="lazy">
+        </div>
+        <figcaption class="fold-label">17 Fold</figcaption>
+      </figure>
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <img src="./static/images/fold_manipulation/00_gear/11_fold_18.webp" alt="Gear result with 18-fold symmetry" loading="lazy">
+        </div>
+        <figcaption class="fold-label">18 Fold</figcaption>
+      </figure>
+    </div>
+
+    <div class="fold-grid fold-grid--eight" aria-label="Spinning top fold manipulation examples">
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <img src="./static/images/fold_manipulation/01_spin/00_input_image.webp" alt="Spinning top input image" loading="lazy">
+        </div>
+        <figcaption class="fold-label">Input Image</figcaption>
+      </figure>
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <div class="fold-composite">
+            <img class="fold-main" src="./static/images/fold_manipulation/01_spin/01_vanilla_trellis2_main.webp" alt="Spinning top result from TRELLIS.2" loading="lazy">
+            <img class="fold-zoom" src="./static/images/fold_manipulation/01_spin/01_vanilla_trellis2_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </div>
+        <figcaption class="fold-label">TRELLIS.2</figcaption>
+      </figure>
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <div class="fold-composite">
+            <img class="fold-main" src="./static/images/fold_manipulation/01_spin/02_fold_05_main.webp" alt="Spinning top result with 5-fold symmetry" loading="lazy">
+            <img class="fold-zoom" src="./static/images/fold_manipulation/01_spin/02_fold_05_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </div>
+        <figcaption class="fold-label">5 Fold</figcaption>
+      </figure>
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <div class="fold-composite">
+            <img class="fold-main" src="./static/images/fold_manipulation/01_spin/03_fold_06_main.webp" alt="Spinning top result with 6-fold symmetry" loading="lazy">
+            <img class="fold-zoom" src="./static/images/fold_manipulation/01_spin/03_fold_06_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </div>
+        <figcaption class="fold-label">6 Fold</figcaption>
+      </figure>
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <div class="fold-composite">
+            <img class="fold-main" src="./static/images/fold_manipulation/01_spin/04_fold_07_main.webp" alt="Spinning top result with 7-fold symmetry" loading="lazy">
+            <img class="fold-zoom" src="./static/images/fold_manipulation/01_spin/04_fold_07_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </div>
+        <figcaption class="fold-label">7 Fold</figcaption>
+      </figure>
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <div class="fold-composite">
+            <img class="fold-main" src="./static/images/fold_manipulation/01_spin/05_fold_08_main.webp" alt="Spinning top result with 8-fold symmetry" loading="lazy">
+            <img class="fold-zoom" src="./static/images/fold_manipulation/01_spin/05_fold_08_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </div>
+        <figcaption class="fold-label">8 Fold</figcaption>
+      </figure>
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <div class="fold-composite">
+            <img class="fold-main" src="./static/images/fold_manipulation/01_spin/06_fold_09_main.webp" alt="Spinning top result with 9-fold symmetry" loading="lazy">
+            <img class="fold-zoom" src="./static/images/fold_manipulation/01_spin/06_fold_09_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </div>
+        <figcaption class="fold-label">9 Fold</figcaption>
+      </figure>
+      <figure class="fold-cell">
+        <div class="fold-image-frame">
+          <div class="fold-composite">
+            <img class="fold-main" src="./static/images/fold_manipulation/01_spin/07_fold_10_main.webp" alt="Spinning top result with 10-fold symmetry" loading="lazy">
+            <img class="fold-zoom" src="./static/images/fold_manipulation/01_spin/07_fold_10_zoom.webp" alt="" aria-hidden="true" loading="lazy">
+          </div>
+        </div>
+        <figcaption class="fold-label">10 Fold</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -234,6 +624,5 @@ docker run --rm --gpus all                                          \
     </div>
   </div>
 </footer>
-
 </body>
 </html>
