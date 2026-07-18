@@ -177,6 +177,13 @@ body {
   font-family: 'Google Sans', sans-serif;
 }
 
+.visuals-note {
+  margin: -0.35rem 0 1rem;
+  color: #555555;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
 .visuals-table-wrap {
   width: 100%;
   overflow-x: hidden;
