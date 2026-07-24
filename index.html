@@ -190,14 +190,21 @@
 # torch2.7.0-cu128-py311
 # torch2.6.0-cu124-py310
 
+mkdir -p \
+  "$HOME/.cache/huggingface" \
+  "$HOME/.config/huggingface" \
+  "$HOME/.cache/triton"
+
 docker run --rm --gpus all                                          \
   -p 7860:7860                                                      \
   -e SYMTRELLIS_WEBUI_SESSION_TIMEOUT_SECONDS=315360000             \
   -e SYMTRELLIS_WEBUI_CLEANUP_INTERVAL_SECONDS=300                  \
   -e HF_HOME=/root/.cache/huggingface                               \
   -e HUGGINGFACE_HUB_CACHE=/root/.cache/huggingface/hub             \
+  -e TRITON_CACHE_DIR=/root/.cache/triton                           \
   -v "$HOME/.cache/huggingface:/root/.cache/huggingface"            \
   -v "$HOME/.config/huggingface:/root/.config/huggingface:ro"       \
+  -v "$HOME/.cache/triton:/root/.cache/triton"                      \
   ghcr.io/symtrellis/symtrellis:inference-"$ENV_TAG"</code></pre>
     </div>
   </div>
